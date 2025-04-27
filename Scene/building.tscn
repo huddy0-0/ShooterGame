@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb2klc3f0d8yf"]
+
+[ext_resource type="Texture2D" uid="uid://dhugvjrr5261w" path="res://Texture/Level Eleven Games Sci-Fi Texture Pack v1/Grid-002-11_Base-004.png" id="1_8saja"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3ate"]
+albedo_texture = ExtResource("1_8saja")
+uv1_scale = Vector3(8, 8, 8)
+uv1_triplanar = true
+
+[node name="Building" type="Node3D"]
+
+[node name="FrontWall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 4, 0, 0, 0, 13.7, 6.85, 2, -4.23442)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.381836)
+
+[node name="FrontWall2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 4, 0, 0, 0, 13.7, 6.85, 2, 4.32139)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.369141)
+
+[node name="BackWall" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 4, 0, 0, 0, 13.699, -6.85, 2, 0)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+
+[node name="RightWall" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, -14, 0, 4, 0, 0.3, 0, -6.11959e-07, 3.5, 2, 7)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.501831)
+
+[node name="RightWall2" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, -14, 0, 4, 0, 0.3, 0, -6.11959e-07, -5.42816, 2, 7)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.226379)
+
+[node name="LeftWall" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, -14, 0, 4, 0, 0.3, 0, -6.11959e-07, 5.67041, 2, -7)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.189941)
+
+[node name="LeftWall2" type="CSGBox3D" parent="."]
+transform = Transform3D(-1.31134e-08, 0, -14, 0, 4, 0, 0.3, 0, -6.11959e-07, -2.5874, 2, -7)
+material_override = SubResource("StandardMaterial3D_f3ate")
+use_collision = true
+size = Vector3(1, 1, 0.630371)
