@@ -13,9 +13,9 @@ const PROPEL_STRENGTH = 8.0
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
-@onready var palmer_texture = preload("res://IMG_86141.jpg")
-@onready var john_texture = preload("res://IMG_86142.jpg")
-@onready var aiden_texture = preload("res://IMG_86143.jpg")
+@onready var palmer_texture = preload("res://Texture/OrbHeads/palmer.png")
+@onready var john_texture = preload("res://Texture/OrbHeads/john.png")
+@onready var aiden_texture = preload("res://Texture/OrbHeads/aidan.png")
 
 
 
