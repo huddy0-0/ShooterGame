@@ -82,7 +82,7 @@ func _randomize_texture(sphere):
 	match random_value:
 		0: chosen_texture = palmer_texture
 		1: chosen_texture = john_texture
-		3: chosen_texture = aiden_texture
+		2: chosen_texture = aiden_texture
 		_: chosen_texture = john_texture
 	
 	sphere.material_override.albedo_texture = chosen_texture
