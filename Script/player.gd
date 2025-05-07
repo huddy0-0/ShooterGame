@@ -67,12 +67,14 @@ func _physics_process(delta):                                                   
 	var direction = (playerHead.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if noclip_enabled:
-		if Input.is_action_pressed("up"):
-			velocity.y = speed
-		elif Input.is_action_pressed("down"):
-			velocity.y = -speed
+		var vertical_input = Input.get_action_strength("up") - Input.get_action_strength("down")
+		var movement_input = Vector3(input_dir.x, vertical_input, input_dir.y)
+	
+		if movement_input.length() > 0:
+			var move_dir = (playerHead.global_transform.basis * movement_input).normalized()
+			velocity = move_dir * speed
 		else:
-			velocity.y = 0
+			velocity = Vector3.ZERO
 			
 	else:
 		if is_on_floor():                                                                           #If player is on the floor

@@ -3,11 +3,12 @@ extends CharacterBody3D
 var player = null
 var state_machine
 var propel_force = Vector3.ZERO
-
+var was_in_attack_range = false
+var attacking = false
 
 const SPEED = 4.0
 const ATTACK_RANGE = 1.5
-const PROPEL_STRENGTH = 8.0
+const PROPEL_STRENGTH = 10.0
 
 @export var player_path := "../Player"
 
@@ -17,9 +18,8 @@ const PROPEL_STRENGTH = 8.0
 @onready var john_texture = preload("res://Texture/OrbHeads/john.png")
 @onready var aiden_texture = preload("res://Texture/OrbHeads/aidan.png")
 
-
-
 func _ready():
+	randomize()
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 	
@@ -38,29 +38,32 @@ func _process(delta):
 			var next_nav_point = nav_agent.get_next_path_position()
 			movement_velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			look_at(Vector3(global_position.x + movement_velocity.x, global_position.y, global_position.z + movement_velocity.z), Vector3.UP)
+		
 		"DropKick":
-			var direction = (player.global_position - global_position).normalized()
-			movement_velocity = direction * (SPEED * 0.5)  
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
-	movement_velocity += propel_force
 	
+	movement_velocity += propel_force
 	propel_force = propel_force.lerp(Vector3.ZERO, delta * 5.0)
 	
 	velocity = movement_velocity
 	move_and_slide()
 	
-	#Conditions
-	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	anim_tree.set("parameters/conditions/run", !_target_in_range())
+	# Attack recovery
+	var current_state = state_machine.get_current_node()
+	if current_state == "Walk":
+		attacking = false
 	
-	anim_tree.get("parameters/playback")
+	# Attack logic
+	var in_attack_range = _target_in_range()
+	if in_attack_range and not was_in_attack_range:
+		_choose_attack()
+	was_in_attack_range = in_attack_range
 
 func _target_in_range():
 	if player == null:
 		return false
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
-	
 
 func _hit_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
@@ -76,7 +79,7 @@ func propel_forward():
 func _randomize_texture(sphere):
 	if sphere.material_override == null:
 		sphere.material_override = StandardMaterial3D.new()
-		
+	
 	var random_value = randi() % 3
 	var chosen_texture
 	match random_value:
@@ -86,3 +89,9 @@ func _randomize_texture(sphere):
 		_: chosen_texture = john_texture
 	
 	sphere.material_override.albedo_texture = chosen_texture
+
+func _choose_attack():
+	if attacking:
+		return
+	attacking = true
+	state_machine.travel("DropKick")
