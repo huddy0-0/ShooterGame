@@ -7,10 +7,12 @@ var was_in_attack_range = false
 var attacking = false
 
 const SPEED = 4.0
-const ATTACK_RANGE = 1.5
+const ATTACK_RANGE = 2
 const PROPEL_STRENGTH = 10.0
 
 @export var player_path := "../Player"
+@onready var path_points := get_node(player_path + "/PathPoints")
+var player_target
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var anim_tree = $AnimationTree
@@ -19,12 +21,13 @@ const PROPEL_STRENGTH = 10.0
 @onready var aiden_texture = preload("res://Texture/OrbHeads/aidan.png")
 
 func _ready():
-	randomize()
 	player = get_node(player_path)
+	var markers = path_points.get_children()
+	player_target = markers[randi() % markers.size()]
 	state_machine = anim_tree.get("parameters/playback")
 	
-	var sphere = $Armature/Skeleton3D/Head2Attachment3D/CSGSphere3D
-	_randomize_texture(sphere)
+	var cube = $Armature/Skeleton3D/Head2Attachment3D/CSGBox3D
+	_randomize_texture(cube)
 
 func _process(delta):
 	if player == null:
@@ -34,13 +37,13 @@ func _process(delta):
 	
 	match state_machine.get_current_node():
 		"Walk":
-			nav_agent.set_target_position(player.global_transform.origin)
+			nav_agent.set_target_position(player_target.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
 			movement_velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 			look_at(Vector3(global_position.x + movement_velocity.x, global_position.y, global_position.z + movement_velocity.z), Vector3.UP)
 		
 		"DropKick":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			look_at(Vector3(player.global_position.x, global_position.y, player_target.global_position.z), Vector3.UP)
 	
 	
 	movement_velocity += propel_force
@@ -76,9 +79,9 @@ func propel_forward():
 	var direction = (player.global_position - global_position).normalized()
 	propel_force = direction * PROPEL_STRENGTH
 
-func _randomize_texture(sphere):
-	if sphere.material_override == null:
-		sphere.material_override = StandardMaterial3D.new()
+func _randomize_texture(cube):
+	if cube.material_override == null:
+		cube.material_override = StandardMaterial3D.new()
 	
 	var random_value = randi() % 3
 	var chosen_texture
@@ -88,7 +91,7 @@ func _randomize_texture(sphere):
 		2: chosen_texture = aiden_texture
 		_: chosen_texture = john_texture
 	
-	sphere.material_override.albedo_texture = chosen_texture
+	cube.material_override.albedo_texture = chosen_texture
 
 func _choose_attack():
 	if attacking:

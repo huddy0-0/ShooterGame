@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6fs41iwmbkl6"]
+[gd_scene load_steps=5 format=3 uid="uid://b6fs41iwmbkl6"]
 
 [ext_resource type="Script" uid="uid://c2winb3guupsg" path="res://Script/player.gd" id="1_kelma"]
+[ext_resource type="PackedScene" uid="uid://be3riq8capxuo" path="res://Scene/shotgun.tscn" id="2_y8w33"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_036b0"]
 
@@ -22,3 +23,24 @@ shape = SubResource("ConvexPolygonShape3D_dwbse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49312, 0)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHead"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.184541)
+
+[node name="Shotgun" parent="PlayerHead/Camera3D" instance=ExtResource("2_y8w33")]
+transform = Transform3D(0.649996, 0.00225758, 0, -0.00225758, 0.649996, 0, 0, 0, 0.65, 0.287307, -0.189557, -0.300372)
+
+[node name="PathPoints" type="Node3D" parent="."]
+
+[node name="Marker3D1" type="Marker3D" parent="PathPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.537786)
+
+[node name="Marker3D2" type="Marker3D" parent="PathPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.625278)
+
+[node name="Marker3D3" type="Marker3D" parent="PathPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.564755, 0, -0.0176353)
+
+[node name="Marker3D4" type="Marker3D" parent="PathPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610003, 0, 0.00504762)
+
+[node name="Marker3D5" type="Marker3D" parent="PathPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0255883)
