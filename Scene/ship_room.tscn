@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://4rn61ih2wq2l"]
+[gd_scene load_steps=13 format=3 uid="uid://4rn61ih2wq2l"]
 
 [ext_resource type="Script" uid="uid://diiyct3wgjtrp" path="res://Script/ship_room.gd" id="1_qgotm"]
 [ext_resource type="Texture2D" uid="uid://cy4on2ce4xca1" path="res://Texture/Level Eleven Games Sci-Fi Texture Pack v1/MetalGrateFloor-01_64.png" id="3_qgotm"]
 [ext_resource type="PackedScene" uid="uid://bb2klc3f0d8yf" path="res://Scene/building.tscn" id="4_mr565"]
 [ext_resource type="PackedScene" uid="uid://c55o8qgof2wyh" path="res://Scene/john.tscn" id="5_eujwv"]
 [ext_resource type="PackedScene" uid="uid://b6fs41iwmbkl6" path="res://Scene/player.tscn" id="5_qgotm"]
+[ext_resource type="PackedScene" uid="uid://bxui6intf4wrh" path="res://Scene/terminal.tscn" id="7_7c0nh"]
+[ext_resource type="PackedScene" uid="uid://c3v782jgpj1ec" path="res://Scene/table.tscn" id="7_yjinv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mr565"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -97,6 +99,17 @@ transform = Transform3D(-0.98573, 0, 0.168334, 0, 1, 0, -0.168334, 0, -0.98573, 
 
 [node name="Player" parent="Structures/NavigationRegion3D" instance=ExtResource("5_qgotm")]
 
+[node name="DevFloor" type="CSGBox3D" parent="Structures"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.0068, -0.216248, -7.74878)
+use_collision = true
+size = Vector3(9.98636, 0.8302, 16.4976)
+
+[node name="terminal" parent="Structures" instance=ExtResource("7_7c0nh")]
+transform = Transform3D(-1.6094e-08, 0, 0.368189, 0, 0.368189, 0, -0.368189, 0, -1.6094e-08, 37.0295, 1.38015, -6.87586)
+
+[node name="table" parent="Structures" instance=ExtResource("7_yjinv")]
+transform = Transform3D(-3.63354e-08, 0, 0.831258, 0, 0.831258, 0, -0.831258, 0, -3.63354e-08, 37.2389, 0, -6.89785)
+
 [node name="Spawns" type="Node3D" parent="."]
 
 [node name="Spawn1" type="Node3D" parent="Spawns"]
@@ -145,7 +158,7 @@ offset_bottom = 767.0
 color = Color(0.996078, 0.145098, 0, 0.294118)
 
 [node name="JohnSpawnTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 15.0
 autostart = true
 
 [connection signal="timeout" from="JohnSpawnTimer" to="." method="_on_john_spawn_timer_timeout"]
