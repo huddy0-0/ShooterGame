@@ -4,7 +4,7 @@ extends Node3D
 @onready var spawns = $Spawns
 @onready var navigation_region = $Structures/NavigationRegion3D
 
-var john = load("res://Scene/john.tscn")
+var john = load("res://Scene/Agents/john.tscn")
 var instance
 
 # Called when the node enters the scene tree for the first time.

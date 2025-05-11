@@ -22,7 +22,7 @@ var t_bob = 0.0
 
 var gravity = 9.8
 
-var bullet = load("res://Scene/bullet.tscn")
+var bullet = load("res://Scene/Weapon_Manager/bullet.tscn")
 var instance 
 
 @onready var playerHead = $PlayerHead
