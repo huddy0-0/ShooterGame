@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdbdmcbx8des1"]
+
+[ext_resource type="Script" uid="uid://c4o26simvicr6" path="res://Script/weapon_manager.gd" id="1_a5nk2"]
+[ext_resource type="Script" uid="uid://cgfeom2hlehpb" path="res://Script/weapon_resource.gd" id="2_jp0cx"]
+[ext_resource type="Resource" uid="uid://df3m1dqehnfdw" path="res://Script/WeaponResource/shotgun.tres" id="3_vwo7j"]
+
+[node name="WeaponManager" type="Node3D"]
+script = ExtResource("1_a5nk2")
+_weapon_resources = Array[ExtResource("2_jp0cx")]([ExtResource("3_vwo7j")])
+start_weapons = Array[String](["shotgun"])

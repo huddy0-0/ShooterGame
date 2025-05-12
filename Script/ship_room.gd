@@ -4,18 +4,12 @@ extends Node3D
 @onready var spawns = $Spawns
 @onready var navigation_region = $Structures/NavigationRegion3D
 
-var john = load("res://Scene/Agents/john.tscn")
+var john = load("res://Scene/Agent/john.tscn")
 var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_player_player_hit() -> void:
 	hit_rect.visible = true

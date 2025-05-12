@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b20y2rktbcbn6"]
+
+[sub_resource type="Gradient" id="Gradient_tho0d"]
+offsets = PackedFloat32Array(0, 0.198413, 0.547619, 0.880952, 1)
+colors = PackedColorArray(0.835294, 0.282353, 0, 0, 0.835294, 0.156863, 0, 1, 0.831373, 0.462745, 1, 1, 0.827451, 0.756863, 0, 1, 0.827451, 0.756863, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5dl7j"]
+gradient = SubResource("Gradient_tho0d")
+height = 256
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.526316, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6n6u3"]
+gradient = SubResource("Gradient_tho0d")
+height = 256
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.526316, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ov2d"]
+transparency = 1
+cull_mode = 2
+albedo_texture = SubResource("GradientTexture2D_5dl7j")
+emission_enabled = true
+emission_energy_multiplier = 5.0
+emission_texture = SubResource("GradientTexture2D_6n6u3")
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vcj1c"]
+material = SubResource("StandardMaterial3D_5ov2d")
+size = 0.013
+sections = 2
+section_length = 0.5
+section_segments = 1
+
+[node name="Bullet" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.503906)
+mesh = SubResource("RibbonTrailMesh_vcj1c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

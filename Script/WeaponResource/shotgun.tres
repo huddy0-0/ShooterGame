@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://df3m1dqehnfdw"]
+
+[ext_resource type="Script" uid="uid://cgfeom2hlehpb" path="res://Script/weapon_resource.gd" id="1_q0mtc"]
+[ext_resource type="PackedScene" uid="uid://be3riq8capxuo" path="res://Scene/Weapon/shotgun.tscn" id="2_8yjpe"]
+
+[resource]
+script = ExtResource("1_q0mtc")
+weapon_name = "Shotgun"
+equip_anim = "Equip"
+shoot_anim = "Shoot"
+reload_anim = "Reload"
+unequip_anim = "Unequip"
+ammo_empty_anim = "Ammo_Empty"
+current_ammo = 7
+reserve_ammo = 7
+magazine_ammo = 7
+max_ammo = 49
+auto_fire = false
+weapon_scene = ExtResource("2_8yjpe")
+metadata/_custom_type_script = "uid://cgfeom2hlehpb"

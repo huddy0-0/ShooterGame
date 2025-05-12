@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://diiyct3wgjtrp" path="res://Script/ship_room.gd" id="1_qgotm"]
 [ext_resource type="Texture2D" uid="uid://cy4on2ce4xca1" path="res://Texture/Level Eleven Games Sci-Fi Texture Pack v1/MetalGrateFloor-01_64.png" id="3_qgotm"]
-[ext_resource type="PackedScene" uid="uid://bb2klc3f0d8yf" path="res://Scene/World_Assets/building.tscn" id="4_mr565"]
-[ext_resource type="PackedScene" uid="uid://c55o8qgof2wyh" path="res://Scene/Agents/john.tscn" id="5_eujwv"]
-[ext_resource type="PackedScene" uid="uid://b6fs41iwmbkl6" path="res://Scene/Agents/player.tscn" id="5_qgotm"]
-[ext_resource type="PackedScene" uid="uid://bxui6intf4wrh" path="res://Scene/World_Assets/terminal.tscn" id="7_7c0nh"]
-[ext_resource type="PackedScene" uid="uid://c3v782jgpj1ec" path="res://Scene/World_Assets/table.tscn" id="7_yjinv"]
-[ext_resource type="PackedScene" uid="uid://dboq2ms8t1ko8" path="res://Scene/Dev_Tools/testjohn.tscn" id="8_7c0nh"]
+[ext_resource type="PackedScene" uid="uid://bb2klc3f0d8yf" path="res://Scene/Structure/building.tscn" id="4_mr565"]
+[ext_resource type="PackedScene" uid="uid://c55o8qgof2wyh" path="res://Scene/Agent/john.tscn" id="5_eujwv"]
+[ext_resource type="PackedScene" uid="uid://b6fs41iwmbkl6" path="res://Scene/Agent/player.tscn" id="5_qgotm"]
+[ext_resource type="PackedScene" uid="uid://bxui6intf4wrh" path="res://Scene/Structure/terminal.tscn" id="7_7c0nh"]
+[ext_resource type="PackedScene" uid="uid://c3v782jgpj1ec" path="res://Scene/Structure/table.tscn" id="7_yjinv"]
+[ext_resource type="PackedScene" uid="uid://dboq2ms8t1ko8" path="res://Scene/Dev/testjohn.tscn" id="8_7c0nh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mr565"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)

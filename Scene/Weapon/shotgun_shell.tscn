@@ -1,22 +1,22 @@
 [gd_scene load_steps=7 format=4 uid="uid://cntujvh1fytc0"]
 
-[ext_resource type="Texture2D" uid="uid://5h0xhjaspul7" path="res://Model/12_shotgun_shell/textures/lambert1_baseColor.png" id="1_hfky2"]
-[ext_resource type="Texture2D" uid="uid://c566f2sc40tb2" path="res://Model/12_shotgun_shell/textures/lambert1_metallicRoughness.png" id="2_ty00v"]
-[ext_resource type="Texture2D" uid="uid://d0n5ihxgg5s32" path="res://Model/12_shotgun_shell/textures/lambert1_normal.png" id="3_h5lw8"]
+[ext_resource type="Texture2D" uid="uid://5h0xhjaspul7" path="res://Model/12_shotgun_shell/textures/lambert1_baseColor.png" id="1_t31x0"]
+[ext_resource type="Texture2D" uid="uid://c566f2sc40tb2" path="res://Model/12_shotgun_shell/textures/lambert1_metallicRoughness.png" id="2_oilv3"]
+[ext_resource type="Texture2D" uid="uid://d0n5ihxgg5s32" path="res://Model/12_shotgun_shell/textures/lambert1_normal.png" id="3_1iuyb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8038"]
 resource_name = "lambert1"
 cull_mode = 2
-albedo_texture = ExtResource("1_hfky2")
+albedo_texture = ExtResource("1_t31x0")
 metallic = 1.0
-metallic_texture = ExtResource("2_ty00v")
+metallic_texture = ExtResource("2_oilv3")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_ty00v")
+roughness_texture = ExtResource("2_oilv3")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_h5lw8")
+normal_texture = ExtResource("3_1iuyb")
 ao_enabled = true
-ao_texture = ExtResource("2_ty00v")
+ao_texture = ExtResource("2_oilv3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_v3qeh"]
 _surfaces = [{

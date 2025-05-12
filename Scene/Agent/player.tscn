@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6fs41iwmbkl6"]
 
 [ext_resource type="Script" uid="uid://c2winb3guupsg" path="res://Script/player.gd" id="1_kelma"]
-[ext_resource type="PackedScene" uid="uid://be3riq8capxuo" path="res://Scene/Weapon_Manager/shotgun.tscn" id="2_y8w33"]
+[ext_resource type="PackedScene" uid="uid://cdbdmcbx8des1" path="res://Scene/Weapon/weapon_manager.tscn" id="2_vaykr"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_036b0"]
 
@@ -26,9 +26,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49312, 0)
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.184541)
+fov = 85.0
 
-[node name="Shotgun" parent="PlayerHead/Camera3D" instance=ExtResource("2_y8w33")]
-transform = Transform3D(0.649996, 0.00225758, 0, -0.00225758, 0.649996, 0, 0, 0, 0.65, 0.287307, -0.189557, -0.300372)
+[node name="WeaponHoldPos" type="Marker3D" parent="PlayerHead/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215856, -0.197684, -0.291444)
+
+[node name="WeaponManager" parent="PlayerHead/Camera3D" instance=ExtResource("2_vaykr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.210596, -0.1687, -0.28282)
+start_weapons = Array[String](["Shotgun"])
 
 [node name="PathPoints" type="Node3D" parent="."]
 

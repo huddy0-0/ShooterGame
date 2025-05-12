@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://cdbdmcbx8des1"]
+
+[ext_resource type="Script" uid="uid://c4o26simvicr6" path="res://Script/weapon_manager.gd" id="1_a5nk2"]
+[ext_resource type="PackedScene" uid="uid://c3su4ter1yti7" path="res://Scene/Weapon/muzzle_flash.tscn" id="1_l4km1"]
+[ext_resource type="Script" uid="uid://cgfeom2hlehpb" path="res://Script/weapon_resource.gd" id="2_jp0cx"]
+[ext_resource type="Resource" uid="uid://df3m1dqehnfdw" path="res://Script/WeaponResource/shotgun.tres" id="3_vwo7j"]
+[ext_resource type="PackedScene" uid="uid://be3riq8capxuo" path="res://Scene/Weapon/shotgun.tscn" id="4_vwo7j"]
+[ext_resource type="PackedScene" uid="uid://b20y2rktbcbn6" path="res://Scene/Weapon/_bullet.tscn" id="6_drr4f"]
+
+[node name="WeaponManager" type="Node3D"]
+script = ExtResource("1_a5nk2")
+_weapon_resources = Array[ExtResource("2_jp0cx")]([ExtResource("3_vwo7j")])
+start_weapons = Array[String](["shotgun"])
+
+[node name="GunRig" type="Node3D" parent="."]
+
+[node name="Shotgun" parent="GunRig" instance=ExtResource("4_vwo7j")]
+
+[node name="GunEffect" type="Node3D" parent="."]
+
+[node name="MuzzleFlash" parent="GunEffect" instance=ExtResource("1_l4km1")]
+
+[node name="GunTracer" type="Node3D" parent="."]
+
+[node name="Bullet" parent="GunTracer" instance=ExtResource("6_drr4f")]
+visible = false
+script = null

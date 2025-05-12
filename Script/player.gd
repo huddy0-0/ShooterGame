@@ -11,7 +11,7 @@ const SENSITIVITY = 0.003
 const HIT_STAGGER = 4.0
 const PROPEL_STRENGTH = 8.0
 
-const BASE_FOV = 75.0
+const BASE_FOV = 85.0
 const FOV_CHANGE = 1.5
 
 signal player_hit
@@ -22,13 +22,8 @@ var t_bob = 0.0
 
 var gravity = 9.8
 
-var bullet = load("res://Scene/Weapon_Manager/bullet.tscn")
-var instance 
-
 @onready var playerHead = $PlayerHead
 @onready var camera = $PlayerHead/Camera3D
-@onready var gun_anim = $PlayerHead/Camera3D/Shotgun/AnimationPlayer
-@onready var gun_barrel = $PlayerHead/Camera3D/Shotgun/RayCast3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -104,15 +99,6 @@ func _physics_process(delta):
 	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
-	
-	# Shooting
-	if Input.is_action_pressed("shoot"):
-		if !gun_anim.is_playing():
-			gun_anim.play("Shoot")
-			instance = bullet.instantiate()
-			instance.position = gun_barrel.global_position
-			instance.transform.basis = gun_barrel.global_transform.basis #
-			get_tree().root.add_child(instance)
 	
 	# Final movement step
 	if noclip_enabled:
