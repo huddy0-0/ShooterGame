@@ -26,6 +26,12 @@ func _input(event):
 		print("Mouse Wheel down")
 		#weapon_indicator = max(weapon_indicator-1, 0)
 		#exit(weapon_stack[weapon_indicator])
+		
+	if event.is_action_pressed("shoot"):
+		shoot()
+	
+	if event.is_action_pressed("reload"):
+		reload()
 
 func Initialize(_start_weapons: Array):
 	for weapon in _weapon_resources:
@@ -73,3 +79,9 @@ func equip_weapon(weapon_res: Weapon_Resource):
 	if current_weapon_animation_player and weapon_res.equip_anim != "" and current_weapon_animation_player.has_animation(weapon_res.equip_anim):
 		current_weapon_animation_player.play(weapon_res.equip_anim)
 	
+
+func shoot():
+	current_weapon_animation_player.play(current_weapon_resource.shoot_anim)
+
+func reload():
+	current_weapon_animation_player.play(current_weapon_resource.reload_anim)

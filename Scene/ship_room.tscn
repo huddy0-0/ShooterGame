@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://4rn61ih2wq2l"]
+[gd_scene load_steps=17 format=3 uid="uid://4rn61ih2wq2l"]
 
 [ext_resource type="Script" uid="uid://diiyct3wgjtrp" path="res://Script/ship_room.gd" id="1_qgotm"]
 [ext_resource type="Texture2D" uid="uid://cy4on2ce4xca1" path="res://Texture/Level Eleven Games Sci-Fi Texture Pack v1/MetalGrateFloor-01_64.png" id="3_qgotm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bxui6intf4wrh" path="res://Scene/Structure/terminal.tscn" id="7_7c0nh"]
 [ext_resource type="PackedScene" uid="uid://c3v782jgpj1ec" path="res://Scene/Structure/table.tscn" id="7_yjinv"]
 [ext_resource type="PackedScene" uid="uid://dboq2ms8t1ko8" path="res://Scene/Dev/testjohn.tscn" id="8_7c0nh"]
+[ext_resource type="Texture2D" uid="uid://b5jjpwa258kj1" path="res://Texture/OrbHeads/john.png" id="9_wtf50"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mr565"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -31,6 +32,34 @@ agent_radius = 1.0
 albedo_texture = ExtResource("3_qgotm")
 uv1_scale = Vector3(3.065, 3.065, 3.065)
 uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3ate"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("9_wtf50")
+metallic = 0.18
+metallic_specular = 0.0
+emission = Color(1, 1, 1, 1)
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 1.0
+subsurf_scatter_transmittance_color = Color(1, 0, 0, 1)
+subsurf_scatter_transmittance_depth = 8.0
+subsurf_scatter_transmittance_boost = 1.0
+backlight_enabled = true
+backlight = Color(1, 0, 1, 1)
+refraction_scale = -1.0
+refraction_texture = ExtResource("9_wtf50")
+refraction_texture_channel = 3
+uv1_scale = Vector3(8.61, 8.61, 8.61)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 76.1094
+uv2_world_triplanar = true
+grow_amount = 0.719
+
+[sub_resource type="SphereMesh" id="SphereMesh_4wa1r"]
+flip_faces = true
 
 [node name="ShipRoom" type="Node3D"]
 script = ExtResource("1_qgotm")
@@ -176,5 +205,10 @@ color = Color(0.996078, 0.145098, 0, 0.294118)
 [node name="JohnSpawnTimer" type="Timer" parent="."]
 wait_time = 100.0
 autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(630.089, 0, 0, 0, 630.089, 0, 0, 0, 630.089, 0, 3.43168, -2.89429)
+material_override = SubResource("StandardMaterial3D_f3ate")
+mesh = SubResource("SphereMesh_4wa1r")
 
 [connection signal="timeout" from="JohnSpawnTimer" to="." method="_on_john_spawn_timer_timeout"]

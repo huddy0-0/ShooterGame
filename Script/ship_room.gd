@@ -3,6 +3,7 @@ extends Node3D
 @onready var hit_rect = $UI/HitRect
 @onready var spawns = $Spawns
 @onready var navigation_region = $Structures/NavigationRegion3D
+@onready var death_sphere = $MeshInstance3D
 
 var john = load("res://Scene/Agent/john.tscn")
 var instance
@@ -10,6 +11,9 @@ var instance
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	randomize()
+
+func _process(delta: float) -> void:
+	death_sphere.global_rotation += Vector3(0, 0.01, 0)
 
 func _on_player_player_hit() -> void:
 	hit_rect.visible = true
